@@ -1,6 +1,8 @@
+#!/usr/local/bin/python3
 """
 A simple app to create a JWT token.
 """
+
 import os
 import logging
 import datetime
@@ -59,6 +61,11 @@ def require_jwt(function):
 @APP.route('/', methods=['POST', 'GET'])
 def health():
     return jsonify("Healthy")
+
+
+@APP.route('/env', methods=['POST', 'GET'])
+def env_check():
+    return jsonify(JWT_SECRET)
 
 
 @APP.route('/auth', methods=['POST'])
